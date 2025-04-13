@@ -57,17 +57,17 @@ export default function Home() {
 
   const exportImage = async () => {
     if (!frameRef.current) return;
-    
+
     try {
       setIsExporting(true);
-      
+
       // Load html2canvas dynamically
-      const html2canvas = (await import('html2canvas')).default;
-      
+      const html2canvas = (await import("html2canvas")).default;
+
       // Increase these values for higher quality
       const scale = 4; // Increase from 2 to 4 for higher resolution
       const quality = 1.0; // Maximum quality (0.0 to 1.0)
-      
+
       const canvas = await html2canvas(frameRef.current, {
         useCORS: true,
         allowTaint: true,
@@ -75,21 +75,20 @@ export default function Home() {
         logging: false,
         scale: scale, // Higher resolution
       });
-      
+
       // Convert to image with maximum quality
-      const imageUrl = canvas.toDataURL('image/png', quality);
-      
+      const imageUrl = canvas.toDataURL("image/png", quality);
+
       // Create download link
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = imageUrl;
-      link.download = `${userName || 'profile'}-image.png`;
+      link.download = `${userName || "profile"}-image.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
     } catch (error) {
-      console.error('Error exporting image:', error);
-      alert('Failed to export image. Please try again.');
+      console.error("Error exporting image:", error);
+      alert("Failed to export image. Please try again.");
     } finally {
       setIsExporting(false);
     }
@@ -188,7 +187,12 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <h1 className="title">গরুফ্রেম by <a href="https://www.facebook.com/profile.php?id=100066946987258">Abu Sayed</a></h1>
+        <h1 className="title">
+          গরুফ্রেম by{" "}
+          <a href="https://www.facebook.com/profile.php?id=100066946987258">
+            Abu Sayed
+          </a>
+        </h1>
 
         <div className="content">
           <div className="preview-section">
@@ -336,20 +340,18 @@ export default function Home() {
       </main>
 
       <style jsx>{`
-      @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
         * {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          font-family: 'hind siliguri', sans-serif;
-      }
-          a{
-            color: rgb(255, 17, 72);
-            text-decoration: underline;
-          }
-
-
+          font-family: "hind siliguri", sans-serif;
+        }
+        a {
+          color: rgb(255, 17, 72);
+          text-decoration: underline;
+        }
 
         .container {
           min-height: 100vh;
@@ -403,7 +405,7 @@ export default function Home() {
 
         .image-circle {
           aspect-ratio: 1;
-          background-color:rgba(119, 119, 119, 0.64);
+          background-color: rgba(119, 119, 119, 0.64);
           border-radius: 50%;
           width: 180px;
           height: 180px;
@@ -445,7 +447,6 @@ export default function Home() {
           cursor: move;
           transform-origin: center;
           object-fit: cover;
-
         }
 
         .profile-image {
@@ -462,13 +463,11 @@ export default function Home() {
           font-weight: bold;
           font-size: 25px;
         }
-        
 
         .user-name,
         .user-info {
           margin: 5px 0;
           word-wrap: break-word;
-    
         }
 
         .form-container,
@@ -548,12 +547,12 @@ export default function Home() {
           text-align: center;
           color: #555;
         }
-          .credit{
+        .credit {
           position: absolute;
           font-size: 8px;
           bottom: 10px;
           right: 10px;
-          }
+        }
         @media (min-width: 768px) {
           .content {
             flex-direction: row;
@@ -563,9 +562,9 @@ export default function Home() {
           .controls-section {
             width: 50%;
           }
-        .frame-container {
-          width: 500px;
-        }
+          .frame-container {
+            width: 500px;
+          }
           .image-circle {
             aspect-ratio: 1;
             background-color: #fff3;
@@ -578,14 +577,14 @@ export default function Home() {
             overflow: hidden;
             background-color: #eee;
           }
-            .text-overlay {
-          position: absolute;
-          left: 5%;
-          top: 75%;
-          color: #000;
-          font-weight: bold;
-          font-size: 25px;
-        }
+          .text-overlay {
+            position: absolute;
+            left: 5%;
+            top: 75%;
+            color: #000;
+            font-weight: bold;
+            font-size: 25px;
+          }
         }
       `}</style>
     </div>

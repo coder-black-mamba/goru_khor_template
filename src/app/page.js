@@ -371,6 +371,7 @@ export default function Home() {
           top: 19%;
           right: -1%;
           overflow: hidden;
+          object-fit: cover;
         }
 
         .upload-placeholder {
@@ -403,11 +404,13 @@ export default function Home() {
           height: 100%;
           cursor: move;
           transform-origin: center;
+          object-fit: cover;
+
         }
 
         .profile-image {
-          width: 100%;
-          height: 100%;
+          width: 180px;
+          height: 180px;
           object-fit: cover;
         }
 

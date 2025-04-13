@@ -236,6 +236,7 @@ export default function Home() {
                   {userName && <p className="user-name">{userName}</p>}
                 </div>
                 <div className="credit">Made With ❤️ by Abu Sayed</div>
+                <img src="/background.jpg" alt="logo" className="backdrop" />
               </div>
             </div>
           </div>
@@ -553,6 +554,15 @@ export default function Home() {
           bottom: 10px;
           right: 10px;
         }
+          .backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+          }
         @media (min-width: 768px) {
           .content {
             flex-direction: row;

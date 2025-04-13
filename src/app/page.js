@@ -20,36 +20,76 @@ export default function Home() {
   const frameRef = useRef(null);
 
   // Export functionality
+  // const exportImage = async () => {
+  //   if (!frameRef.current) return;
+
+  //   try {
+  //     setIsExporting(true);
+
+  //     // Load html2canvas dynamically
+  //     const html2canvas = (await import("html2canvas")).default;
+
+  //     const canvas = await html2canvas(frameRef.current, {
+  //       useCORS: true,
+  //       allowTaint: true,
+  //       backgroundColor: null,
+  //       logging: false,
+  //       scale: 2, // Higher resolution
+  //     });
+
+  //     // Convert to image
+  //     const imageUrl = canvas.toDataURL("image/png");
+
+  //     // Create download link
+  //     const link = document.createElement("a");
+  //     link.href = imageUrl;
+  //     link.download = `${userName || "profile"}-image.png`;
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //   } catch (error) {
+  //     console.error("Error exporting image:", error);
+  //     alert("Failed to export image. Please try again.");
+  //   } finally {
+  //     setIsExporting(false);
+  //   }
+  // };
+
   const exportImage = async () => {
     if (!frameRef.current) return;
-
+    
     try {
       setIsExporting(true);
-
+      
       // Load html2canvas dynamically
-      const html2canvas = (await import("html2canvas")).default;
-
+      const html2canvas = (await import('html2canvas')).default;
+      
+      // Increase these values for higher quality
+      const scale = 4; // Increase from 2 to 4 for higher resolution
+      const quality = 1.0; // Maximum quality (0.0 to 1.0)
+      
       const canvas = await html2canvas(frameRef.current, {
         useCORS: true,
         allowTaint: true,
         backgroundColor: null,
         logging: false,
-        scale: 2, // Higher resolution
+        scale: scale, // Higher resolution
       });
-
-      // Convert to image
-      const imageUrl = canvas.toDataURL("image/png");
-
+      
+      // Convert to image with maximum quality
+      const imageUrl = canvas.toDataURL('image/png', quality);
+      
       // Create download link
-      const link = document.createElement("a");
+      const link = document.createElement('a');
       link.href = imageUrl;
-      link.download = `${userName || "profile"}-image.png`;
+      link.download = `${userName || 'profile'}-image.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      
     } catch (error) {
-      console.error("Error exporting image:", error);
-      alert("Failed to export image. Please try again.");
+      console.error('Error exporting image:', error);
+      alert('Failed to export image. Please try again.');
     } finally {
       setIsExporting(false);
     }
@@ -523,15 +563,17 @@ export default function Home() {
           .controls-section {
             width: 50%;
           }
-
+        .frame-container {
+          width: 500px;
+        }
           .image-circle {
             aspect-ratio: 1;
             background-color: #fff3;
             border-radius: 50%;
-            width: 280px;
-            height: 280px;
+            width: 240px;
+            height: 240px;
             position: absolute;
-            top: 19%;
+            top: 18%;
             right: -2%;
             overflow: hidden;
             background-color: #eee;

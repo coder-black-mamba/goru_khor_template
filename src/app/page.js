@@ -138,7 +138,7 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Profile Image Creator</title>
+        <title>গরুফ্রেম</title>
         <meta name="description" content="Upload your profile image" />
         <link rel="icon" href="/favicon.ico" />
         {/* Load html2canvas only when needed */}
@@ -148,7 +148,7 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <h1 className="title">গরুফ্রেম by <a href="https://github.com/coder-black-mamba">Abu Sayed</a></h1>
+        <h1 className="title">গরুফ্রেম by <a href="https://www.facebook.com/profile.php?id=100066946987258">Abu Sayed</a></h1>
 
         <div className="content">
           <div className="preview-section">
@@ -304,6 +304,10 @@ export default function Home() {
           box-sizing: border-box;
           font-family: 'hind siliguri', sans-serif;
       }
+          a{
+            color: rgb(255, 17, 72);
+            text-decoration: underline;
+          }
 
 
 
@@ -341,7 +345,7 @@ export default function Home() {
           padding: 20px;
           background-color: #f5f5f5;
           text-align: center;
-          width: 100%;
+          width: 400px;
         }
 
         .bengali-frame {
@@ -364,8 +368,8 @@ export default function Home() {
           width: 180px;
           height: 180px;
           position: absolute;
-          top: 18%;
-          right: -2%;
+          top: 19%;
+          right: -1%;
           overflow: hidden;
         }
 
